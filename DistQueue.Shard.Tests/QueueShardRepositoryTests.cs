@@ -11,7 +11,7 @@ namespace DistQueue.Shard.Model.Tests
         [Fact]
         public void Test_List_NotInitialized()
         {
-            var repo = new QueueShardRepository(null);
+            var repo = new QueueShardRepository();
             Assert.False(repo.List().Any());
         }
 
@@ -42,7 +42,7 @@ namespace DistQueue.Shard.Model.Tests
         [Fact]
         public void Test_DeleteQueue_NotExisting()
         {
-            var repo = new QueueShardRepository(null);
+            var repo = new QueueShardRepository();
             Assert.Throws<ArgumentException>(() => repo.DeleteQueue("test"));
         }
 

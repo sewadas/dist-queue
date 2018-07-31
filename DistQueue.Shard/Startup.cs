@@ -32,6 +32,8 @@ namespace DistQueue.Shard
         {
             // Add framework services.
             services.AddMvc();
+            services.Configure<QueueShardSettings>(Configuration);
+            services.AddSingleton<QueueShardContext>();
             services.AddSingleton<IQueueShardRepository, QueueShardRepository>();
         }
 

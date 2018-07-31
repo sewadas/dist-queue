@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,9 +10,10 @@ namespace DistQueue.Shard.Model
 {
     public class QueueShard<T> where T : IQueueShardItem
     {
-        public QueueShard(string name, TimeSpan? defaultVisibilityTimeout = null, short maxDequeueAttempts = 5)
+        public QueueShard(string name, TimeSpan? defaultVisibilityTimeout = null, short maxDequeueAttempts = 5, IEnumerable<T> queueItems = null)
         {
-            queue = new ConcurrentQueue<T>();
+            if (queueItems == null) queue = new ConcurrentQueue<T>();
+            else queue = new ConcurrentQueue<T>(queueItems);
             Name = name;
             this.maxDequeueAttempts = maxDequeueAttempts;
 
@@ -62,7 +64,7 @@ namespace DistQueue.Shard.Model
         public int InFlightCount { get { return inflightItems.Count; } }
         public bool IsEmpty { get { return queue.IsEmpty; } }
         public string Name { get; private set; }
-        public T[] ToArray() { return queue.ToArray(); }
+        public T[] ToArray() { return queue.ToArray().Concat(inflightItems.Values).ToArray(); }
 
         private ConcurrentQueue<T> queue;
         private ConcurrentDictionary<string, T> inflightItems;

@@ -8,6 +8,12 @@ namespace DistQueue.Shard.Model
 {
     public class QueueShardRepository : IQueueShardRepository
     {
+        public QueueShardRepository(QueueShardContext context)
+        {
+            
+            shards = new ConcurrentDictionary<string, QueueShard<IQueueShardItem>>(context.Queues.ToDictionary(key => key.Name, value => value));
+        }
+
         public QueueShardRepository(IEnumerable<QueueShard<IQueueShardItem>> queueShards = null)
         {
             if (queueShards == null) shards = new ConcurrentDictionary<string, QueueShard<IQueueShardItem>>();

@@ -4,12 +4,14 @@ using System.Text;
 
 namespace DistQueue.Shard.Model
 {
+    [Serializable]
     public class QueueShardItem : IQueueShardItem
     {
-        public QueueShardItem(string name, byte[] content)
+        public QueueShardItem(string id, byte[] content, int dequeueAttempts = 0)
         {
-            this.name = name;
+            this.id = id;
             this.content = content;
+            this.DequeueAttempts = 0;
         }
 
         public bool IsVisible()
@@ -23,13 +25,13 @@ namespace DistQueue.Shard.Model
             this.visibilityTimeout = DateTime.UtcNow.Ticks + visibilityTimeout.Ticks;
         }
 
-        public string ID { get => name; }
+        public string ID { get { return id; } }
 
         public int DequeueAttempts { get; set; }
 
         public byte [] Content { get { return content; } }
 
-        private readonly string name;
+        private readonly string id;
         private readonly byte[] content;
         private long? visibilityTimeout;
     }
