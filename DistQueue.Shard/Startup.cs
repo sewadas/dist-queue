@@ -34,7 +34,8 @@ namespace DistQueue.Shard
             services.AddMvc();
             services.Configure<QueueShardSettings>(Configuration);
             services.AddSingleton<QueueShardContext>();
-            services.AddSingleton<IQueueShardRepository, QueueShardRepository>();
+            services.AddSingleton<IQueueShardRepository, QueueShardRepository>(ctx =>
+                { return new QueueShardRepository(ctx.GetService<QueueShardContext>()); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

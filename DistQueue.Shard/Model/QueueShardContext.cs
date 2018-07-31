@@ -15,6 +15,7 @@ namespace DistQueue.Shard.Model
         {
             _settings = settings.Value;
             if (string.IsNullOrEmpty(_settings.StoragePath)) throw new ArgumentException("Invalid Storage Path");
+            if (Directory.Exists(_settings.StoragePath) == false) Directory.CreateDirectory(_settings.StoragePath);
         }
 
         public List<QueueShard<IQueueShardItem>> Queues

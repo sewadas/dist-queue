@@ -10,18 +10,12 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      "launchBrowser": true
     },
-    "SolidQueue.Shard": {
+    "DistQueue.Shard": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/v1/queues",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
       "applicationUrl": "http://localhost:51741"
     }
   }
