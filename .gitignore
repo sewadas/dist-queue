@@ -11,3 +11,13 @@
 /DistQueue.Shard.Tests/obj/Debug
 /DistQueue.Shard.Tests/obj/MCD
 /DistQueue.Shard.Tests/obj
+/src/DistQueue.Shard.Core/obj
+/src/DistQueue.Shard.Infrastructure/obj
+/src/DistQueue.Shard.Web/obj
+/tests/DistQueue.Shard.Tests/obj
+/src/Bin/netcoreapp2.1
+/src/DistQueue.Shard.Core/bin/Debug/netcoreapp2.1
+/src/DistQueue.Shard.Infrastructure/bin/Debug/netcoreapp2.1
+/src/DistQueue.Shard.Web/bin/Debug
+/tests/Bin/netcoreapp2.1
+/tests/DistQueue.Shard.Tests/bin/Debug

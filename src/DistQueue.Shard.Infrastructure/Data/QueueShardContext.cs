@@ -11,6 +11,8 @@ namespace DistQueue.Shard.Model
 {
     public class QueueShardContext
     {
+        private readonly QueueShardSettings _settings;
+
         public QueueShardContext(IOptions<QueueShardSettings> settings)
         {
             _settings = settings.Value;
@@ -36,9 +38,6 @@ namespace DistQueue.Shard.Model
                 return _queues;
             }
         }
-
-        private readonly QueueShardSettings _settings;
-        private readonly List<QueueShard<IQueueShardItem>> _queues;
 
         public void Save(QueueShard<IQueueShardItem> queue)
         {
