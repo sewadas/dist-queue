@@ -8,15 +8,17 @@
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true
-    },
+			"IIS Express": {
+				"commandName": "IISExpress",
+				"launchBrowser": true,
+				"launchUrl": "api/v1/queue",
+				"applicationUrl": "http://localhost:51740"
+			},
     "DistQueue.Shard": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/v1/queues",
-      "applicationUrl": "http://localhost:51741"
+      "launchUrl": "api/v1/queue",
+      "applicationUrl": "http://localhost:51740"
     }
   }
 }
