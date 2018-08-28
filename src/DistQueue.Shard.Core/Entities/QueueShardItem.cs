@@ -11,7 +11,7 @@ namespace DistQueue.Shard.Model
         {
             this.id = id;
             this.content = content;
-            this.DequeueAttempts = 0;
+            this.DequeueAttempts = dequeueAttempts;
         }
 
         public bool IsVisible()
